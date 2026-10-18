@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Comeback Time</title>
+    <style>
+        body {
+            background-color: cadetblue;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+            display: block;
+        }
+        .quote {
+            font-style: italic;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+/* TOPBAR */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    padding-top: 85px;
+}
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 14px 22px;
+    background: #07111f;
+    border-bottom: 2px solid #00e5ff;
+}
+
+.topbar .logo {
+    color: #00e5ff;
+    font-size: 19px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.topbar nav {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.topbar nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.topbar nav a:hover {
+    color: #00e5ff;
+}
+
+/* ABOUT US */
+.about-section {
+    margin: 35px 0;
+    padding: 45px 20px;
+    background: linear-gradient(135deg, #07111f, #17344b);
+    color: white;
+    text-align: center;
+    border: 1px solid #00e5ff;
+    border-radius: 18px;
+}
+
+.about-section .tag {
+    color: #00e5ff;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.about-section h2 {
+    font-size: 32px;
+}
+
+.about-section h2 span {
+    color: #00e5ff;
+}
+
+.about-section .description {
+    max-width: 750px;
+    margin: 15px auto 30px;
+    line-height: 1.8;
+    color: #d5e5f5;
+}
+
+.about-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.about-card {
+    padding: 20px;
+    background: #14243a;
+    border: 1px solid #31506a;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    border-color: #00e5ff;
+}
+
+.about-card h3 {
+    color: #00e5ff;
+}
+
+.about-card p {
+    line-height: 1.6;
+}
+
+.about-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 22px;
+    background: #00e5ff;
+    color: #07111f;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+@media (max-width: 700px) {
+    .topbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .topbar nav {
+        gap: 12px;
+    }
+
+    .topbar nav a {
+        font-size: 12px;
+    }
+
+    body {
+        padding: 15px;
+        padding-top: 125px;
+    }
+
+    .about-section h2 {
+        font-size: 26px;
+    }
+}
+
+/* Funny popup design */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-box {
+    background: #07111f;
+    color: white;
+    padding: 30px;
+    border: 2px solid #00e5ff;
+    border-radius: 18px;
+    text-align: center;
+    width: 90%;
+    max-width: 380px;
+    box-shadow: 0 0 25px #00e5ff66;
+    animation: popupAppear 0.4s ease;
+}
+
+.popup-box h2 {
+    color: #00e5ff;
+}
+
+.popup-box button {
+    background: #00e5ff;
+    color: #07111f;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+@keyframes popupAppear {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+
+/* PUBLIC COMMENTS DESIGN */
+#reviews {
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #07111f;
+  color: white;
+  border: 2px solid #00e5ff;
+  border-radius: 16px;
+  box-shadow: 0 0 18px #00e5ff33;
+}
+
+#reviews h2,
+#reviews h3 {
+  color: #00e5ff;
+}
+
+#reviews input,
+#reviews textarea {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  padding: 12px;
+  border: 1px solid #31506a;
+  border-radius: 8px;
+  background: #14243a;
+  color: white;
+  font: inherit;
+}
+
+#reviews textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+#reviews button {
+  margin: 5px 5px 5px 0;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #00e5ff;
+  color: #07111f;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#reviews button:hover {
+  background: white;
+}
+
+#publicComments .review-card {
+  margin: 14px 0;
+  padding: 16px;
+  overflow-wrap: anywhere;
+  background: #14243a;
+  border: 1px solid #31506a;
+  border-radius: 12px;
+}
+
+#publicComments .review-name {
+  color: #00e5ff;
+  font-weight: bold;
+}
+
+#publicComments .review-date {
+  color: #b8c7d9;
+  font-size: 12px;
+}
+
+#publicComments .review-text {
+  white-space: pre-wrap;
+}
+
+#commentMessage {
+  overflow-wrap: anywhere;
+}
+
+    </style>
+</head>  
+<body>
+
+<!-- Funny Study Popup -->
+<div class="popup-overlay" id="studyPopup">
+    <div class="popup-box">
+        <h2>😂 OYE STUDENT!</h2>
+        <p>Arey padha likho, IAS-VAIS bano, desh ko sambhalo! 😂🇮🇳</p>
+        <button onclick="closeStudyPopup()">Achha bhai 😂</button>
+    </div>
+</div>
+
+<header class="topbar">
+    <div class="logo">🚀 Our Comeback Time</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#sst">SST</a>
+        <a href="#maths">Maths</a>
+        <a href="#computer">Computer</a>
+        <a href="#science">Science</a>
+        <a href="#english">English</a>
+        <a href="#methods of life">Methods of life</a>
+        <a href="#g.k">G.K</a>
+        <a href="#Hindi">Hindi</a>
+        <a href="#Sanskirit">Sanskirit</a>
+        <a href="#about-us">About Us</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHmGqPi9LzhrlRdyXeJW720MftuwJjVu94uqjPTKb1Lg&s=10" alt="Our comeback time" width="1000">
+    
+    <h1 id="home">Our comeback time 😎</h1>
+    <p>So here is our exam in December, called Periodic Test 2 (formerly known as PT2).</p>        
+    <p>So we have a plan here where we can achieve good marks in this exam, and we can do it together.</p> 
+    
+    <p>So here is our plan:</p>
+    <ul>
+        <li>We will study together</li>
+        <li>We will share our notes</li>
+        <li>We will do past papers together</li>
+        <li>We will help each other with difficult topics</li>
+    </ul>
+
+    <p>So let's start our journey to success together!</p>
+    <p><strong>WE HAVE TO MAKE A PLAN AND GATHER STUDY MATERIALS AND PAST PAPERS TOGETHER, AND WE WILL HELP EACH OTHER TO ACHIEVE GOOD MARKS IN THIS EXAM.</strong></p>
+    <p>Our friends of KSPS can access the study materials and past papers from the links below:</p>
+
+    <!-- SST Section -->
+    <h2 id="sst">Social Studies (SST)</h2>
+    <p>Topics to remember and discuss:</p>
+    
+    <h3>History</h3>
+    <ul>
+        <li>(Part 1) Chapter 8: How the land becomes sacred</li>
+        <li>(Part 2) Chapter 3: The age of expanding kingdoms (6th - 10th century)</li>
+    </ul>
+    <p>Magnet Brains video tutorials:</p>
+    <ul>
+        <li>For Ch 8 [How the land becomes sacred]: <a href="https://youtu.be/iDrF1gFp_cE?si=kpSSnTK3u7vkM4pJ" target="_blank" rel="noopener">Click here</a></li>
+        <li>For Ch 3 [The age of expanding kingdoms]: <a href="https://youtu.be/OaYw057Iytw?si=Y-GeVc1y7nxJVP_C" target="_blank" rel="noopener">Click here</a></li>
+    </ul>
+    <p class="quote">Thought - Today is all I can control.</p>
+
+    <h3>Geography</h3>
+    <ul>
+        <li>(Part 2) Ch 1: The Story of farming</li> 
+        <li>(Part 2) Ch 2: India and her neighbours</li>
+        <li>(Part 1) Ch 3: India's climatic diversity</li>
+    </ul>
+    <p>Magnet Brains video tutorials:</p>
+    <ul>
+        <li>For Ch 1 [The Story of farming]: <a href="https://youtu.be/1QxdXSJhgFQ?si=o8ILD-soV-mAxX9q" target="_blank" rel="noopener">Click here</a></li>
+        <li>For Ch 2 [India and her neighbours]: <a href="https://youtu.be/6jxqPSHAHGo?si=0sm-x1Bc9278Bxzp" target="_blank" rel="noopener">Click here</a></li>
+        <li>For Ch 3 [India's climatic diversity]: <a href="https://youtu.be/Nhbq490m-oU?si=jtYPHCF5IAKqSes7" target="_blank" rel="noopener">Click here</a></li>
+    </ul>
+    <p class="quote">Action is a better regret than inaction.</p>
+
+    <h3>Civics</h3>
+    <ul>
+        <li>(Part 2) Ch 6: The state, government and the people</li>
+    </ul>
+    <p>Magnet Brains video tutorial:</p>
+    <ul>
+        <li>For Ch 6 [The state, government and the people]: <a href="https://youtu.be/6g3f0-kVB_w?si=sqsjRV7a1n1eIRaC" target="_blank" rel="noopener">Click here</a></li>
+    </ul>
+    <p class="quote">"Small steps every single day add up to massive results over time. Keep going—you've got this!"</p>
+
+    <h4>Past Question Papers (SST):</h4>    
+    <img src="Images/20261015_224458.jpg" alt="Past paper 1" width="500">
+    <img src="Images/20261015_224507.jpg" alt="Past paper 2" width="500">
+    <img src="Images/20261015_224512.jpg" alt="Past paper 3" width="500">
+    <img src="Images/20261015_224517.jpg" alt="Past paper 4" width="500">
+
+    <hr>
+
+    <!-- Mathematics Section -->
+    <h2 id="maths">Mathematics</h2>
+    <p>Mathematics (shortened as math or maths) is the systematic study of numbers, quantities, shapes, structures, and logical relationships. It uses specialized symbols, rules, and reasoning to analyze patterns and solve problems.</p>
+    
+    <p><strong>Plan:</strong></p>
+    <ul>
+        <li>We will study each chapter thoroughly</li>
+        <li>We will practice problems together</li>
+        <li>We will share our notes and resources</li>
+        <li>We will help each other with difficult topics</li>
+        <li>We will do past papers together</li>
+    </ul>
+
+    <h3>Chapters to Revise</h3>
+    <ul>
+        <li>(Part 1) Ch 7: Triangle and its properties</li>
+        <li>(Part 1) Ch 8: Working with fractions</li>
+        <li>(Part 2) Ch 1: Geometric twins</li>
+        <li>(Part 2) Ch 2: Operations with integers</li>
+        <li>(Part 2) Ch 3: Finding Common ground</li>
+        <li>(Part 2) Ch 4: Another peek beyond the point</li>
+    </ul>
+
+    <p>Video Tutorials:</p>
+    <ul>
+        <li>(Part 1) Ch 7 [Triangle and its properties]: <a href="https://youtu.be/OmIEGpNQSU0?si=8T_q297jdK-SV5yo" target="_blank" rel="noopener">Click here</a></li>
+        <li>(Part 1) Ch 8 [Working with fractions]: <a href="https://youtu.be/uqpQAe0pV0Q?si=sPtAQjWqbSllEhec" target="_blank" rel="noopener">Click here</a></li>
+        <li>(Part 2) Ch 1 [Geometric twins]: <a href="https://youtu.be/8iA9EhldnlQ?si=HXMne9er_joJvcNw" target="_blank" rel="noopener">Click here</a></li>
+        <li>(Part 2) Ch 2 [Operations with integers]: <a href="https://youtu.be/qOfN5jA8eMc?si=qIlTCP1c2pgZt9nv" target="_blank" rel="noopener">Click here</a></li>
+        <li>(Part 2) Ch 3 [Finding Common ground]: <a href="https://youtu.be/S6BUnlYa-9k?si=ZZpeZjQYKdjEr8SK" target="_blank" rel="noopener">Click here</a></li>
+        <li>(Part 2) Ch 4 [Another peek beyond the point]: <a href="https://youtu.be/IMm5cVXSHC0?si=kWHvPSTF9Kusxe4S" target="_blank" rel="noopener">Click here</a></li>
+    </ul>
+    <p class="quote">Progress matters more than perfection.</p>
+
+    <h4>Past Question Papers (Math):</h4>
+    <img src="Images/20261016_065006.jpg" alt="Math past paper 1" width="400">
+    <img src="Images/20261016_065020.jpg" alt="Math past paper 2" width="400">
+    <img src="Images/20261016_065030.jpg" alt="Math past paper 3" width="400">
+
+    <hr>
+
+    <!-- Computer Science Section -->
+    <h2 id="computer">Computer Science</h2>
+    <p>Computer science is the study of computers and computational systems. It encompasses both theoretical foundations of information and practical implementation techniques.</p>
+    
+    <p><strong>Plan:</strong></p>
+    <ul>
+        <li>We will study each chapter thoroughly</li>
+        <li>We will practice problems together</li>
+        <li>We will share our notes and resources</li>
+        <li>We will help each other with difficult topics</li>
+        <li>We will do past papers together</li>
+    </ul>
+
+    <h3>Chapters to Revise</h3>
+    <ul>
+        <li>Ch 5: The magic of HTML TABLES & Hyperlinks</li>
+        <li>Ch 6: App development with MIT App Inventor</li>
+        <li>Ch 7: Introduction to Python programming</li>
+        <li>Ch 8: Introduction to Photoshop</li>
+    </ul>
+
+    <p>Video Tutorials:</p>
+    <ul>
+        <li>Ch 5 (The magic of HTML TABLES & Hyperlinks): <a href="https://youtu.be/jD7gAz4Yoq4?si=kztMrplXe9lGJfkP" target="_blank" rel="noopener">Click here</a> <em>(Score Shala)</em></li>
+        <li>Ch 6 (App development with MIT app inventor): <a href="https://youtu.be/2OHlfoRNtH8?si=Hjn35Deoeau5O7AV" target="_blank" rel="noopener">Click here</a> <em>(Techosa)</em></li>
+        <li>Ch 7 (Introduction to Python programming): <a href="https://youtu.be/2OHlfoRNtH8?si=39xzVblxDNMiIghR" target="_blank" rel="noopener">Click here</a> <em>(Techosa)</em></li>
+        <li>Ch 8 (Introduction with Photoshop): <a href="https://youtu.be/P9c9Pllf8XA?si=ixApER3kxa3mnnjX" target="_blank" rel="noopener">Click here</a> <em>(Digital Animation)</em></li>
+    </ul>
+    <p class="quote">"Hard times don't create heroes. It is within the hard times that the 'hero' within us is revealed."</p>
+
+    <h4>Past Question Papers (Computer Science):</h4>
+    <img src="Images/20261016_142150.jpg" alt="CS past paper 1" width="400">
+    <img src="Images/20261016_142210.jpg" alt="CS past paper 2" width="400">
+    <img src="Images/20261016_142225.jpg" alt="CS past paper 3" width="400">
+
+    <hr>
+
+    <!-- Methods of Life / VED Section -->
+    <h2 id="methods of life">Methods of Life (Moral Science / V.E.D)</h2>
+    <p>Moral science is the study of ethical principles, values, and codes of conduct that help individuals distinguish between right and wrong.</p>
+    
+    <h3>Chapters to Revise</h3>
+    <ul>
+        <li>Ch 8: Escape living in suspicion</li>
+        <li>Ch 9: Self-Respect</li>
+        <li>Ch 10: Self-protection - Self-Respect - Self-Development</li>
+        <li>Ch 11: Learn to be in harmony with nature</li>
+        <li>Ch 12: Blessed life</li>
+        <li>Ch 13: Public dealing and Tactfulness</li>
+        <li>Ch 14: Explosion of anger</li>
+        <li>Ch 15: Self-appreciation</li>
+    </ul>
+
+    <h4>Past Question Paper Solutions:</h4>
+    <img src="Images/20261016_142812.jpg" alt="VED past paper" width="400">
+
+    <p><strong>Q1: How do self-confident children get successful?</strong><br>
+    Ans: Self-confident children achieve success by bravely embracing new challenges and bouncing back quickly from failures.</p>
+
+    <p><strong>Q2: What type of atmosphere should be created at home?</strong><br>
+    Ans: A positive and supportive atmosphere should be created at home.</p>
+
+    <p><strong>Q3: Why is "Pranayama" essential for our body?</strong><br>
+    Ans: "Pranayama" is essential for our body because it helps in maintaining physical and mental well-being.</p>
+
+    <p><strong>Q4: Why does a person fall ill?</strong><br>
+    Ans: A person falls ill due to a weakened immune system, poor lifestyle choices, or exposure to pathogens.</p>
+
+    <p><strong>Q5: What kind of people are remembered in history?</strong><br>
+    Ans: People who have made significant contributions to society, demonstrated exceptional courage, or achieved remarkable accomplishments are remembered in history.</p>
+
+    <p><strong>Q6: Conversation is an art and skill, how?</strong><br>
+    Ans: Conversation is an art and skill because it requires active listening, empathy, and the ability to express thoughts clearly and respectfully.</p>
+
+    <p><strong>Q7: What is the supreme most duty of man?</strong><br>
+    Ans: The supreme most duty of man is to live a life of integrity, compassion, and responsibility towards oneself and others.</p>
+
+    <p><strong>Q8: What do you mean by the word "Self-Welfare"?</strong><br>
+    Ans: "Self-Welfare" refers to the well-being and personal development of an individual, encompassing physical, mental, and emotional health.</p>
+
+    <hr>
+
+    <!-- English Section -->
+    <h2 id="english">English</h2>
+    <p>English is a versatile and influential language in global communication, literature, and culture.</p>
+    
+    <h3>Grammar</h3>
+    <ul>
+        <li>Active & Passive Voice — <a href="https://youtu.be/hMIVAzd1J1w?si=GAFF0e2JzaG52czm" target="_blank" rel="noopener">Video</a></li>
+        <li>Letter writing — <a href="https://youtu.be/7Lr56s5Ivqc?si=jHkTsU-C7Rd1pXt1" target="_blank" rel="noopener">Video</a></li>
+        <li>Email — <a href="https://youtu.be/JCjl9xmITbs?si=Fkf7nYNuZ4EumyNg" target="_blank" rel="noopener">Video</a></li>
+        <li>Biographical Sketches — <a href="https://youtu.be/hGTAfLXYzDs?si=8UmcHGbQMksF0Nh0" target="_blank" rel="noopener">Video (Vedantu)</a></li>
+        <li>Idiomatic expressions — <a href="https://youtu.be/FaNcvCHioRo?si=9QY5rM5DIKDna5dV" target="_blank" rel="noopener">Video</a></li>
+        <li>Adverbs — <a href="https://youtu.be/c6GMqCVbJWQ?si=a_Tf_7QkBgK5OWTj" target="_blank" rel="noopener">Video</a></li>
+        <li>Conjunctions — <a href="https://youtu.be/p4kuvQiyLwE?si=BjlYkd9ucmpfPCOy" target="_blank" rel="noopener">Video</a></li>
+        <li>Words followed by appropriate prepositions — <a href="https://youtu.be/9NVwD85RPFQ?si=O3MlYpJnuDtTajCD" target="_blank" rel="noopener">Video</a></li>
+        <li>Phrases — <a href="https://youtu.be/3_qnNzP6lEo?si=BvfPF-SR4SIMgzd3" target="_blank" rel="noopener">Video</a></li>
+    </ul>
+
+    <h3>English Coursebook</h3>
+    <ul>
+        <li>Fashion Recycled (Hindi notes below)</li>
+        <li>Style and Grace (Hindi notes below)</li>
+        <li>A Strange Adventure — <a href="https://youtu.be/0aggcRJwG3U?si=B-KtHuhl2c-cKiQw" target="_blank" rel="noopener">Video</a></li>
+        <li>A Land of Wonders (Hindi notes below)</li>
+        <li>Exploring with Exotic — <a href="https://youtu.be/yPrd79mjqrQ?si=NO6cJ7eePKG1RLdA" target="_blank" rel="noopener">Video</a></li>
+        <li>A Tribute — <a href="https://youtu.be/QZtfkw69GTc?si=NadsOLqv8CmqJESC" target="_blank" rel="noopener">Video 1</a> | <a href="https://youtu.be/tALFKvSryJI?si=BJ-i2ncMoyQuse4E" target="_blank" rel="noopener">Video 2</a></li>
+    </ul>
+
+    <h4>Coursebook Chapter Screenshots:</h4>
+    <p><strong>Fashion Recycled:</strong></p>
+    <img src="Images/Screenshot_20261016_144846_Google.jpg" alt="Fashion recycled 1" width="300">
+    <img src="Images/Screenshot_20261016_144904_Google.jpg" alt="Fashion recycled 2" width="300">
+    <img src="Images/Screenshot_20261016_144920_Google.jpg" alt="Fashion recycled 3" width="300">
+    <img src="Images/Screenshot_20261016_144935_Google.jpg" alt="Fashion recycled 4" width="300">
+
+    <p><strong>Style and Grace:</strong></p>
+    <img src="Images/Screenshot_20261016_145845_Google.jpg" alt="Style and grace" width="300">
+
+    <p><strong>A Land of Wonders:</strong></p>
+    <img src="Images/Screenshot_20261016_150518_Google.jpg" alt="A land of wonders 1" width="300">
+    <img src="Images/Screenshot_20261016_150605_Google.jpg" alt="A land of wonders 2" width="300">
+    <img src="Images/Screenshot_20261016_150624_Google.jpg" alt="A land of wonders 3" width="300">
+
+    <h4>Past Question Papers (English):</h4>
+    <img src="Images/20261016_154917.jpg" alt="Past question 1" width="300">
+    <img src="Images/20261016_154939.jpg" alt="Past question 2" width="300">
+    <img src="Images/20261016_154944.jpg" alt="Past question 3" width="300">
+
+    <hr>
+
+    <!-- General Knowledge Section -->
+    <h2 id="g.k">General Knowledge</h2>
+    <ul>
+        <li>Explore India</li>
+        <li>Our India</li>
+        <li>Entertainment and Brain Teasers</li>
+        <li>Science and Technology</li>
+    </ul>
+
+    <hr>
+
+    <!-- Science Section -->
+    <h2 id="science">Science</h2>
+    <p>Science is the systematic study of the physical and natural world through observation, experimentation, and evidence-based reasoning.</p>
+
+    <h3>Chemistry</h3>
+    <ul>
+        <li>The World of Metals and Non-metals — <a href="https://youtu.be/yZzfFgs2gXs?si=zW9c6AiKE1rSjQTQ" target="_blank" rel="noopener">Video</a></li>
+        <li>Changes Around Us: Physical and Chemical — <a href="https://youtu.be/6TAXIyHVeWU?si=Z6IkrtvLZ73jU51f" target="_blank" rel="noopener">Video</a></li>
+    </ul>
+
+    <h3>Physics</h3>
+    <ul>
+        <li>Light: Shadows and Reflections — <a href="https://youtu.be/J7I_Y28g-SU?si=Cf7GTmKuFektZeMs" target="_blank" rel="noopener">Video</a></li>
+        <li>Earth, Moon and Sun — <a href="https://youtu.be/5yzK1CNtcqw?si=JgFNFXfgirTX8xd5" target="_blank" rel="noopener">Video</a></li>
+    </ul>
+
+    <h3>Biology</h3>
+    <ul>
+        <li>Life Processes in Animals — <a href="https://youtu.be/v8AyhWBfxCQ?si=Oolxc8VIgrIlpu5K" target="_blank" rel="noopener">Video</a></li>
+        <li>Life Processes in Plants — <a href="https://youtu.be/V2Bx2_XXAJw?si=uTsiniwxxKrvUlwX" target="_blank" rel="noopener">Video</a></li>
+    </ul>
+
+    <h4>Past Question Papers (Science):</h4>
+    <img src="Images/20261016_162006.jpg" alt="Science past paper 1" width="300">
+    <img src="Images/20261016_162023.jpg" alt="Science past paper 2" width="300">
+    <img src="Images/20261016_162030.jpg" alt="Science past paper 3" width="300">
+    <img src="Images/20261016_162041.jpg" alt="Science past paper 4" width="300">
+
+    <hr>
+
+    <!-- Hindi Section -->
+    <h2 id="Hindi">Hindi</h2>
+    <p>हिन्दी भारत की एक प्रमुख और समृद्ध भाषा होने के साथ-साथ एक अत्यंत महत्वपूर्ण शैक्षणिक विषय है।</p>
+
+    <h3>Hindi Coursebook</h3>
+    <ul>
+        <li>Ch 11: पेड़ों के संग बढ़ना सीखो — <a href="https://youtu.be/DmEHwmZx_xo?si=bcrR_DiT8m_Bov4w" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 12: सच्चा तीर्थयात्री — <a href="https://youtu.be/3DL7eXQ-eMw?si=GzCj4uSUoiJnc7N7" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 13: कलिंग विजय — <a href="https://youtu.be/A3ifRn3z2ZI?si=_enrX-cNzljndM0q" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 14: जल का महत्व — <a href="https://youtu.be/Pu5QPfK-ask?si=3S_E-XFb742Tnqkh" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 15: नीति के दोहे — <a href="https://youtu.be/nEaZha2qXw0?si=f6igZ2ybmSre-Qd0" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 16: उत्तराखण्ड <em>(Explanation not available)</em></li>
+        <li>Ch 17: गिल्लू — <a href="https://youtu.be/4leIfwtuP0w?si=5wzJjC47KHSTbaiC" target="_blank" rel="noopener">Video</a></li>
+    </ul>
+
+    <h3>Hindi Grammar</h3>
+    <ul>
+        <li>Ch 13: विशेषण — <a href="https://youtu.be/ZjpeDu4AL70?si=glgX16o2DHSLGewU" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 14: क्रिया — <a href="https://youtu.be/wv1-L0Q4M4M?si=sMzE5DdzxtfNpFnA" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 15: काल — <a href="https://youtu.be/rZHhOXk8duY?si=1Fy3-5ryxAwBvLO1" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 16: शब्द भंडार — <a href="https://youtu.be/uNGT8KvJuvY?si=4HZwyEjjyB-OvcDM" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 17: वाच्य — <a href="https://youtu.be/WOunW8dHqkY?si=vUGGgBW56iVh64CM" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 18: अव्यय — <a href="https://youtu.be/CV9wjVTeSJk?si=v5z-dJtlDAWLfkTV" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 19: वाक्य विचार — <a href="https://youtu.be/haMyBF9BKto?si=TFCHDh2ESnFEMCIn" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 20: विराम चिह्न — <a href="https://youtu.be/H8VdMfGIXoc?si=lQj6c1K4-_aqQC3n" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 21: मुहावरे — <a href="https://www.youtube.com/live/w_UxI3pRryw?si=F8m0Mpzc5d5kR_4G" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 22: लोकोक्तियाँ — <a href="https://www.youtube.com/live/w_UxI3pRryw?si=F8m0Mpzc5d5kR_4G" target="_blank" rel="noopener">Video</a></li>
+        <li>Ch 23: पद परिचय — <a href="https://youtu.be/NTcw3bcOeBA?si=psXZZr1nkCn4CGYT" target="_blank" rel="noopener">Video</a></li>
+    </ul>
+
+    <h4>Past Question Papers (Hindi):</h4>
+    <img src="Images/20261017_072648.jpg" alt="Hindi past paper 1" width="300">
+    <img src="Images/20261017_072658.jpg" alt="Hindi past paper 2" width="300">
+    <img src="Images/20261017_072706.jpg" alt="Hindi past paper 3" width="300">
+
+    <hr>
+
+    <!-- Sanskrit Section -->
+    <h2 id="Sanskirit">Sanskrit</h2>
+    <p>संस्कृत दुनिया की सबसे पुरानी और प्राचीन भाषाओं में से एक है, जिसकी शुरुआत प्राचीन भारत में हुई थी।</p>
+
+    <h3>Sanskrit Grammar</h3>
+    <ul>
+        <li>Ch 12: अशुद्धि संशोधनम्</li>
+        <li>Ch 11: विशेषण-विशेष्यम्</li>
+        <li>Ch 13: संस्कृत वाक्य अनुवादम्</li>
+        <li>Ch 14: समय लेखनम्</li>
+        <li>Ch 6: संख्यावाची शब्दाः</li>
+        <li>Ch 8: प्रत्यय</li>
+        <li>Ch 16: चित्राधारित वर्णनम्</li>
+    </ul>
+
+    <h3>Sanskrit Coursebook</h3>
+    <ul>
+        <li>Ch 9: शिष्टाचार</li>
+        <li>Ch 10: होलिकोत्सव</li>
+        <li>Ch 11: प्रहेलिका</li>
+        <li>Ch 12: हिमालय</li>
+        <li>Ch 13: संख्या प्रयोग</li>
+        <li>Ch 14: भारतस्य हृदयम् मध्यप्रदेशः</li>
+        <li>Ch 15: महात्मा बुद्ध</li>
+    </ul>
+
+    <h4>Past Question Papers (Sanskrit):</h4>
+    <img src="Images/20261017_075222.jpg" alt="Sanskrit paper 1" width="300">
+    <img src="Images/20261017_075235.jpg" alt="Sanskrit paper 2" width="300">
+    <img src="Images/20261017_075303.jpg" alt="Sanskrit paper 3" width="300">
+    <img src="Images/20261017_075313.jpg" alt="Sanskrit paper 4" width="300">
+
+    <hr>
+
+    <!-- Contact & Apps Section -->
+    <h2 id="contact">Helpful Resources & Contact</h2>
+    <p>Thanks for visiting! Reach out or subscribe below:</p>
+    <p>
+        <a href="mailto:shoryaraj68@gmail.com"><em>Send us an email</em></a> | 
+        <a href="https://youtube.com/@gawarvorlex?si=cQVAOfKyMcq7fqNT" target="_blank" rel="noopener">Subscribe to my channel</a>
+    </p>
+
+    <h3>Recommended Study Apps</h3>
+    <ul>
+        <li><strong>Regain App:</strong> <a href="https://play.google.com/store/apps/details?id=ai.regainapp&pcampaignid=web_share" target="_blank" rel="noopener">Download on Play Store</a> (Focus timer for study)</li>
+        <li><strong>Exam Countdown & Study Planner:</strong> <a href="https://play.google.com/store/apps/details?id=com.lazybyte.examcountdown&pcampaignid=web_share" target="_blank" rel="noopener">Download on Play Store</a></li>
+    </ul>
+    
+<!-- PUBLIC WEBSITE COMMENTS -->
+<section id="reviews">
+  <h2>🌐 Website Reviews</h2>
+  <p>Share your feedback with everyone!</p>
+
+  <div id="guestLoginBox">
+    <input
+      type="text"
+      id="guestName"
+      placeholder="Enter your guest name"
+      maxlength="30"
+    >
+    <button id="guestLoginBtn">Continue as Guest</button>
+  </div>
+
+  <div id="guestInfo" hidden>
+    <p>Logged in as: <strong id="currentGuest"></strong></p>
+
+    <textarea
+      id="commentText"
+      placeholder="What do you think about this website?"
+      maxlength="1000"
+    ></textarea>
+
+    <button id="postCommentBtn">Post Comment</button>
+    <button id="guestLogoutBtn">Logout</button>
+  </div>
+
+  <p id="commentMessage" role="status"></p>
+
+  <hr>
+  <h3>💬 Comments from Everyone</h3>
+  <div id="publicComments">Loading comments...</div>
+</section>
+
+    <h1 id="about-us">About me!</h1>
+<p><em>Hello there! I am shorya raj who is a student of ksps that who want to make a website so he make website for especially ksps students</em></p>
+
+<script>
+    function closeStudyPopup() {
+        document.getElementById("studyPopup").style.display = "none";
+    }
+
+    // Show popup 2 seconds after the page loads
+    window.addEventListener("load", function () {
+        setTimeout(function () {
+            document.getElementById("studyPopup").style.display = "flex";
+        }, 2000);
+    });
+    
+</script>
+
+
+<script>
+    function closeStudyPopup() {
+        document.getElementById("studyPopup").style.display = "none";
+    }
+
+    window.addEventListener("load", function () {
+        setTimeout(function () {
+            document.getElementById("studyPopup").style.display = "flex";
+        }, 2000);
+    });
+</script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+    import {
+        getAuth,
+        signInAnonymously,
+        signOut,
+        onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+
+    import {
+        getFirestore,
+        collection,
+        addDoc,
+        serverTimestamp,
+        query,
+        orderBy,
+        onSnapshot
+    } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "my-awesme.firebaseapp.com",
+        projectId: "my-awesme",
+        storageBucket: "my-awesme.firebasestorage.app",
+        messagingSenderId: "177974065322",
+        appId: "1:177974065322:web:6306d53c00807d1161b8d3",
+        measurementId: "G-ZVLYL8XRWK"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const $ = id => document.getElementById(id);
+    let guestName = "";
+
+    $("guestLoginBtn").addEventListener("click", async () => {
+        guestName = $("guestName").value.trim();
+
+        if (!guestName) {
+            $("commentMessage").textContent = "Please enter a guest name.";
+            return;
+        }
+
+        try {
+            $("guestLoginBtn").disabled = true;
+            await signInAnonymously(auth);
+            $("currentGuest").textContent = guestName;
+            $("guestLoginBox").hidden = true;
+            $("guestInfo").hidden = false;
+            $("commentMessage").textContent = "Welcome, " + guestName + "!";
+        } catch (error) {
+            $("commentMessage").textContent = "Login failed: " + error.message;
+        } finally {
+            $("guestLoginBtn").disabled = false;
+        }
+    });
+
+    $("postCommentBtn").addEventListener("click", async () => {
+        const user = auth.currentUser;
+        const comment = $("commentText").value.trim();
+
+        if (!user || !guestName) {
+            $("commentMessage").textContent = "Please log in first.";
+            return;
+        }
+
+        if (!comment) {
+            $("commentMessage").textContent = "Please write a comment first.";
+            return;
+        }
+
+        try {
+            $("postCommentBtn").disabled = true;
+
+            await addDoc(collection(db, "websiteComments"), {
+                uid: user.uid,
+                guestName: guestName,
+                comment: comment,
+                createdAt: serverTimestamp()
+            });
+
+            $("commentText").value = "";
+            $("commentMessage").textContent = "Comment saved successfully! 🎉";
+        } catch (error) {
+            $("commentMessage").textContent = "Could not save comment: " + error.message;
+        } finally {
+            $("postCommentBtn").disabled = false;
+        }
+    });
+
+    $("guestLogoutBtn").addEventListener("click", async () => {
+        try {
+            await signOut(auth);
+            guestName = "";
+            $("guestInfo").hidden = true;
+            $("guestLoginBox").hidden = false;
+            $("guestName").value = "";
+            $("commentMessage").textContent = "You have logged out. Your comment remains saved!";
+        } catch (error) {
+            $("commentMessage").textContent = "Logout failed: " + error.message;
+        }
+    });
+
+    onSnapshot(
+        query(collection(db, "websiteComments"), orderBy("createdAt", "desc")),
+        snapshot => {
+            const container = $("publicComments");
+            container.replaceChildren();
+
+            if (snapshot.empty) {
+                container.textContent = "No comments yet. Be the first!";
+                return;
+            }
+
+            snapshot.forEach(docSnap => {
+                const data = docSnap.data();
+
+                const card = document.createElement("div");
+                card.className = "review-card";
+
+                const name = document.createElement("div");
+                name.className = "review-name";
+                name.textContent = data.guestName || "Guest";
+
+                const comment = document.createElement("p");
+                comment.className = "review-text";
+                comment.textContent = data.comment || "";
+
+                card.append(name, comment);
+                container.appendChild(card);
+            });
+        },
+        error => {
+            $("publicComments").textContent =
+                "Could not load comments: " + error.message;
+        }
+    );
+
+    onAuthStateChanged(auth, user => {
+        if (!user) {
+            $("guestInfo").hidden = true;
+            $("guestLoginBox").hidden = false;
+        }
+    });
+</script>
+</body>
+</html>
